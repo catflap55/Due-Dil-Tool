@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Due Diligence Workstation</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div class="brand">
+        <span class="mark" aria-hidden="true">DD</span>
+        <div>
+          <p class="brand-name">Due Diligence Workstation</p>
+          <p class="brand-sub">UK &amp; EU company intelligence · this computer only</p>
+        </div>
+      </div>
+      <nav class="nav" aria-label="Primary">
+        <button type="button" class="nav-btn is-on" data-view="main" id="nav-main">Workspace</button>
+        <button type="button" class="nav-btn" data-view="settings" id="nav-settings">Settings</button>
+      </nav>
+    </header>
+
+    <main>
+      <section id="view-main" class="workspace">
+        <aside class="inquiry">
+          <p class="kicker">New inquiry</p>
+          <h1>Build a dossier</h1>
+          <p class="lede">Run local format checks and official-register follow-ups. Live UK filings need a free Companies House key in Settings. No password. Nothing is uploaded to us.</p>
+
+          <form id="dd-form" class="stack">
+            <label>
+              <span>Legal name</span>
+              <input name="company_name" required placeholder="e.g. ACME LIMITED" autocomplete="off" />
+            </label>
+            <div class="split">
+              <label>
+                <span>Registration number</span>
+                <input name="registration_number" placeholder="UK: 8 digits" autocomplete="off" />
+              </label>
+              <label>
+                <span>Country</span>
+                <select name="country_code" id="country_code"></select>
+              </label>
+            </div>
+            <div id="uk-vat-wrap">
+              <label>
+                <span>UK VAT number</span>
+                <input name="uk_vat_number" placeholder="GB123456715 or 9 digits" autocomplete="off" />
+              </label>
+            </div>
+            <div id="eu-vat-wrap" hidden>
+              <label>
+                <span>EU VAT (VIES)</span>
+                <input name="eu_vat_input" placeholder="e.g. DE123456789" autocomplete="off" />
+              </label>
+            </div>
+            <fieldset>
+              <legend>Checks</legend>
+              <div id="module-checkboxes" class="mods"></div>
+            </fieldset>
+            <label class="check">
+              <input type="checkbox" name="use_cache" checked />
+              Reuse a result from the last 24 hours on this computer
+            </label>
+            <div class="actions">
+              <button type="submit" class="btn-gold" id="btn-run">Run checks</button>
+              <button type="button" class="btn-ghost" id="btn-sample">Open sample dossier</button>
+            </div>
+            <p class="form-status" id="form-status" role="status"></p>
+          </form>
+
+          <div class="history-block">
+            <p class="kicker">Recent on this machine</p>
+            <div id="history-list" class="history-list"><p class="muted">No inquiries yet.</p></div>
+          </div>
+        </aside>
+
+        <section class="dossier" id="dossier" aria-live="polite">
+          <div id="empty-state" class="empty">
+            <p class="kicker">Dossier</p>
+            <h2>Awaiting a subject</h2>
+            <p>Enter a company on the left, or open the sample dossier to see a finished file with no API keys.</p>
+            <ul class="empty-points">
+              <li>Identifier checksums run on this computer</li>
+              <li>Sanctions and register pages open at the official source</li>
+              <li>Companies House / HMRC / VIES when you add keys</li>
+            </ul>
+          </div>
+
+          <div id="dashboard" hidden>
+            <div id="sample-banner" class="banner" hidden>
+              Demonstration file — not a live register response.
+            </div>
+            <div class="dossier-head">
+              <div>
+                <p class="kicker" id="dossier-kicker">Subject</p>
+                <h2 id="dossier-title"></h2>
+                <p class="meta" id="dossier-meta"></p>
+              </div>
+              <div class="score" id="score-box" hidden>
+                <div class="score-ring" id="score-ring">
+                  <span id="score-value">—</span>
+                </div>
+                <p>Internal proxy<br /><span class="muted">higher ≈ lower modelled risk</span></p>
+              </div>
+            </div>
+            <div id="flag-list" class="flags"></div>
+            <div class="export-row">
+              <button type="button" class="btn-gold" id="btn-export">Export PDF</button>
+              <button type="button" class="btn-ghost" id="btn-csv">Export flags CSV</button>
+              <span id="export-msg" class="muted"></span>
+            </div>
+            <div id="modules-out" class="cards"></div>
+          </div>
+        </section>
+      </section>
+
+      <section id="view-settings" class="settings" hidden>
+        <div class="settings-intro">
+          <p class="kicker">Settings</p>
+          <h1>Keys stay on this computer</h1>
+          <p class="lede">Optional. Live UK identity and filings need a Companies House key (free). HMRC VAT needs a developer application. News and Open BRIS are third-party. Saving only updates boxes you type in.</p>
+        </div>
+        <div class="settings-grid">
+          <div class="panel">
+            <h3>API keys</h3>
+            <div id="api-keys-form" class="stack"></div>
+            <button type="button" class="btn-gold" id="btn-save-keys">Save keys</button>
+            <p class="muted" id="keys-msg"></p>
+          </div>
+          <div class="panel">
+            <h3>Credit proxy weights</h3>
+            <p class="muted">This is not a bureau score. It only ranks signals from this run.</p>
+            <div id="weights-sliders" class="stack"></div>
+            <button type="button" class="btn-ghost" id="btn-save-config">Save weights</button>
+            <p class="muted" id="weights-msg"></p>
+          </div>
+          <div class="panel span-2">
+            <h3>Local cache</h3>
+            <p class="muted">Search results are stored in a SQLite file under <code>data/</code> on this computer. That folder is not for GitHub.</p>
+            <button type="button" class="btn-danger" id="btn-clear-cache">Clear search cache</button>
+            <p class="muted" id="cache-msg"></p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="foot">
+      This tool is for information only. It is not legal, credit, tax, or financial advice. You must do your own independent checks at the official source before you act. The authors are not liable for decisions you make from these results.
+      Optional news modules send the company name to the provider you enabled.
+    </footer>
+  </div>
+
+  <script type="text/javascript" src="/eel.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>

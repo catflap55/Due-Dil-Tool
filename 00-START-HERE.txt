@@ -1,0 +1,10 @@
+Open the folder named after THIS computer. Ignore the other two.
+
+  Mac
+  Windows
+  Linux
+
+Inside that folder, open How-to-open.txt (Mac: also open Read-me-first.html).
+
+Do not open files from the Windows folder on a Mac.
+Do not open files from the Mac folder on Windows.

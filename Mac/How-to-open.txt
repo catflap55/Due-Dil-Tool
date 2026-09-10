@@ -1,0 +1,20 @@
+This folder is for Apple Mac only.
+
+FIRST: double-click Read-me-first.html (Safari will open).
+It shows the exact “Not Opened / malware” warning and the clicks
+to allow Start.command. Apple always shows that warning once.
+
+Then:
+1. If Python is missing, install it from https://www.python.org/downloads/
+2. Right-click Start.command  →  Open
+   (Do not double-click Start.command)
+
+Stop: right-click Stop.command → Open.
+
+Leave the text window open. Wait until it says Ready.
+Then the app opens in the browser. Try
+http://localhost:8765 first.
+If that fails, try http://127.0.0.1:8765 — same app.
+If Safari says it cannot connect, the Start window is not running.
+
+More detail: ../README.md  (Mac section)

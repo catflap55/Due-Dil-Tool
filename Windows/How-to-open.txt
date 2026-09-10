@@ -1,0 +1,20 @@
+This folder is for Windows PCs only.
+
+1. Install Python from https://www.python.org/downloads/
+   On the first screen tick: Add python.exe to PATH
+2. Double-click Start.cmd
+
+If Windows says it protected your PC: More info -> Run anyway.
+
+If a Microsoft Store window opens for Python:
+  Settings -> Apps -> Advanced app settings -> App execution aliases
+  Turn off python.exe. Reinstall Python with PATH ticked.
+
+Leave the extra window open while you use the app.
+
+If the page does not load, try http://localhost:8765
+then http://127.0.0.1:8765 -- they are the same app.
+
+Stop: double-click Stop.cmd
+
+More detail: ..\README.md  (Windows section)

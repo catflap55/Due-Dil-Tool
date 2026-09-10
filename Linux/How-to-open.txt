@@ -1,0 +1,17 @@
+This folder is for Linux only.
+
+1. Install Python 3 (see README.md, Linux section)
+2. Right-click Start.sh → Run as a program / Run in Terminal
+
+If nothing happens, in Terminal:
+  cd into this Linux folder, then:
+  bash Start.sh
+
+Leave that window open while you use the app.
+In the browser try http://localhost:8765 and
+http://127.0.0.1:8765 (they are the same app).
+If one fails, use the other.
+
+Stop: bash Stop.sh  (or press Ctrl+C in the Start window)
+
+More detail: ../README.md  (Linux section)

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mac: allow Start.command</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 40rem; margin: 2rem auto; padding: 0 1.25rem; line-height: 1.45; color: #111; }
+    h1 { font-size: 1.4rem; }
+    .err { background: #fff3cd; border: 1px solid #e6c35c; padding: 0.85rem 1rem; border-radius: 8px; }
+    ol { padding-left: 1.25rem; }
+    li { margin: 0.65rem 0; }
+  </style>
+</head>
+<body>
+  <h1>You will see a malware warning. That is normal.</h1>
+  <p class="err">
+    <strong>“Start.command” Not Opened</strong><br />
+    Apple could not verify “Start.command” is free of malware that may harm your Mac or compromise your privacy.
+  </p>
+  <p>Apple shows this for <em>any</em> start file downloaded from the internet that Apple did not sign. It is not saying this project is a virus. Do not delete the file. Do not double-click <code>Start.command</code>.</p>
+  <ol>
+    <li>On that warning, click <strong>Done</strong>.</li>
+    <li>Click the Apple logo at the top-left of the screen.</li>
+    <li>Click <strong>System Settings</strong>.</li>
+    <li>Click <strong>Privacy &amp; Security</strong> in the left list.</li>
+    <li>Scroll down to the heading <strong>Security</strong>.</li>
+    <li>You should see that <code>Start.command</code> was blocked. Click <strong>Open Anyway</strong>.</li>
+    <li>Click <strong>Open Anyway</strong> again if another box appears. Enter the Mac password if asked.</li>
+    <li>Go back to this <strong>Mac</strong> folder. <strong>Right-click</strong> (or Control-click) <code>Start.command</code> → <strong>Open</strong>.</li>
+  </ol>
+  <p>A text window should appear. Leave it open. Do not type in it. Wait until it says <strong>Ready</strong>. Then the app opens. <strong>http://localhost:8765</strong> and <strong>http://127.0.0.1:8765</strong> are the same app. If one cannot connect, try the other. On some Macs only localhost works.</p>
+  <p>If <strong>Open Anyway</strong> is missing, you must trigger the warning once (you already did), then look again in Privacy &amp; Security.</p>
+</body>
+</html>

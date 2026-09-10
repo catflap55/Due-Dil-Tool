@@ -1,0 +1,9 @@
+version: 2
+updates:
+  - package-ecosystem: pip
+    directory: "/"
+    schedule:
+      interval: weekly
+    # Security alerts still appear in the Security tab.
+    # This avoids a stream of version-bump pull requests.
+    open-pull-requests-limit: 0
