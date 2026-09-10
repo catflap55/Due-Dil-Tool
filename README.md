@@ -4,7 +4,7 @@ A **local** UK & EU company-intelligence desk. It runs on this computer. It is n
 
 You type a legal name. The workstation checks identifier formats on this machine, builds a dossier, and opens official registers and sanctions search pages so you can verify at source. Optional live calls (Companies House, HMRC, VIES, news) only happen if you save those keys in Settings — they stay in a local file that Git ignores.
 
-This is not legal, credit, or financial advice.
+This tool is for information only. It is not legal, credit, tax, or financial advice. You must do your own independent checks at the official source before you act. The authors are not liable for decisions you make from these results.
 
 You do **not** need to know how to use a terminal. Install Python for your computer, download the zip, open **only the folder named after this computer**, then open **Start** inside it.
 
